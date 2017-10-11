@@ -4,7 +4,7 @@ module SeventeenMon
     private_class_method :new
 
     def ip_db_path
-      @ip_db_path ||= File.expand_path'/PATH/TO/.datx', __FILE__
+      @ip_db_path ||= File.expand_path'/var/lib/ipip/ipip.datx', __FILE__  # change this path to your .datx file
     end
     def ip_db
       @ip_db ||= File.open ip_db_path, 'rb'
