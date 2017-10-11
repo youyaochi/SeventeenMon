@@ -33,18 +33,18 @@ module SeventeenMon
     end
 
     def find
-      tmp_offset = four_number[0] * 4
-      start = IPDB.instance.index[tmp_offset..(tmp_offset + 3)].unpack("V")[0] * 8 + 1024
+      tmp_offset = four_number[0] * 256 + four_number[1] * 4
+      start = IPDB.instance.index[tmp_offset..(tmp_offset + 3)].unpack("V")[0] * 9 + 262144
 
-      index_offset = nil
+      index_offset = -1
 
       while start < IPDB.instance.max_comp_length
         if IPDB.instance.index[start..(start + 3)] >= packed_ip
           index_offset = "#{IPDB.instance.index[(start + 4)..(start + 6)]}\x0".unpack("V")[0]
-          index_length = IPDB.instance.index[(start + 7)].unpack("C")[0]
+          index_length = IPDB.instance.index[(start + 7)..(start + 8)].unpack("n")[0]
           break
         end
-        start += 8
+        start += 9
       end
 
       return "N/A" unless index_offset
@@ -53,11 +53,7 @@ module SeventeenMon
         str.encode("UTF-8", "UTF-8")
       end
 
-      {
-        country: result[0],
-        province: result[1],
-        city: result[2]
-      }
+      result
     end
   end
 end

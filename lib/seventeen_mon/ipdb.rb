@@ -4,7 +4,7 @@ module SeventeenMon
     private_class_method :new
 
     def ip_db_path
-      @ip_db_path ||= File.expand_path'../../data/17monipdb.dat', __FILE__
+      @ip_db_path ||= File.expand_path'/PATH/TO/.datx', __FILE__
     end
     def ip_db
       @ip_db ||= File.open ip_db_path, 'rb'
@@ -19,7 +19,7 @@ module SeventeenMon
     end
 
     def max_comp_length
-      @max_comp_length ||= offset - 1028
+      @max_comp_length ||= offset - 262144 - 4
     end
 
     def self.instance
@@ -27,7 +27,7 @@ module SeventeenMon
     end
 
     def seek(_offset, length)
-      IO.read(ip_db_path, length, offset + _offset - 1024).split "\t"
+      IO.read(ip_db_path, length, offset + _offset - 262144).split "\t"
     end
   end
 end

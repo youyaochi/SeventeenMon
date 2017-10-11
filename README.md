@@ -1,17 +1,19 @@
 # SeventeenMon
 
-SeventeenMon simply help you find location by IP address. Data is totally based on [17MON.CN](http://tool.17mon.cn/).
+SeventeenMon simply help you find location by IP address. Data is totally based on [ipip.net](https://ipip.net/).
+*This version only support .datx for now.*
+
 
 
 ## Compatibility
 
-I have tested it on Ruby >= 1.9.3. Other versions are not tested but should work on well. Please contact me if not.
+I have tested it on Ruby >= 1.9.3 and JRuby == 9.1.13. Other versions are not tested but should work on well. Please contact me if not.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'seventeen_mon', git: "git@github.com:mycolorway/SeventeenMon.git"
+    gem 'seventeen_mon', git: "git@github.com:youyaochi/logstash-filter-ipip.git"
 
 And then execute:
 
@@ -26,25 +28,21 @@ Or you can install simply by
 ### In Ruby
 ```(ruby)
 SM.find_by_ip "119.75.216.20"
-# => {:country=>"中国", :province=>"北京", :city=>"北京"}
+# => ["China", "Beijing", "Beijing", "", "ChinaUnicom", "39.9388838", "116.3974589", "Asia/Shanghai", "UTC+8", "110000", "86", "CN", "AP"]
 
 SM.find_by_address "http://taobao.com"
-# => {:country=>"中国", :province=>"浙江", :city=>"杭州"}
+# => ["China", "Zhejiang", "Hangzhou", "", "ALIYUN", "30.252501", "120.165024", "Asia/Shanghai", "UTC+8", "330100", "86", "CN", "AP"]
 ```
 
 ### In Command Line
 
 ```(bash)
-$ seventeen ip 119.75.216.20
-Country:   中国
-Province:  北京
-City:      北京
+$ seventeen ip 123.118.14.91
+China, Beijing, Beijing, , ChinaUnicom, 39.9388838, 116.3974589, Asia/Shanghai, UTC+8, 110000, 86, CN, AP
 
 
 $ seventeen seventeen address http://taobao.com
-Country:   中国
-Province:  浙江
-City:      杭州
+China, Zhejiang, Hangzhou, , ALIYUN, 30.252501, 120.165024, Asia/Shanghai, UTC+8, 330100, 86, CN, AP
 ```
 
 ## Contributing

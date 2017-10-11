@@ -6,11 +6,11 @@ require 'seventeen_mon/version'
 Gem::Specification.new do |spec|
   spec.name          = "seventeen_mon"
   spec.version       = SeventeenMon::VERSION
-  spec.authors       = ["Jingkai He"]
-  spec.email         = ["jaxihe@gmail.com"]
-  spec.summary       = %q{Simply find location by IP.}
-  spec.description   = %q{Simply find location by IP.}
-  spec.homepage      = "https://github.com/mycolorway/SeventeenMon"
+  spec.authors       = ["Ge Gao"]
+  spec.email         = ["me@youyaochi.me"]
+  spec.summary       = %q{Tool for find ip information from .datx file of IPIP.net.}
+  spec.description   = %q{Tool for find ip information from .datx file of IPIP.net.}
+  spec.homepage      = "https://github.com/youyaochi/SeventeenMon"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

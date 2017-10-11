@@ -34,12 +34,8 @@ if OPERATIONS.include?(op)
   begin
     result = SM.send("find_by_#{op}".to_sym, ARGV.first)
 
-    if result.is_a? Hash
-    puts <<-EOS
-Country:   #{result[:country]}
-Province:  #{result[:province]}
-City:      #{result[:city]}
-EOS
+    if result.is_a? Array
+      puts result.join(', ')
     else
       puts "N/A"
     end
